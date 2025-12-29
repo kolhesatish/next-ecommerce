@@ -19,47 +19,61 @@ type ProductListSecProps = {
 
 const ProductListSec = ({ title, data, viewAllLink }: ProductListSecProps) => {
   return (
-    <section className="max-w-frame mx-auto text-center">
+    <section className="max-w-frame mx-auto text-center px-4 xl:px-0">
+      {/* SECTION TITLE */}
       <motion.h2
-        initial={{ y: "100px", opacity: 0 }}
+        initial={{ y: "80px", opacity: 0 }}
         whileInView={{ y: "0", opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className={cn([
+        className={cn(
           integralCF.className,
-          "text-[32px] md:text-5xl mb-8 md:mb-14 capitalize",
-        ])}
+          "text-[30px] md:text-5xl mb-6 md:mb-12 capitalize text-gray-900"
+        )}
       >
         {title}
       </motion.h2>
+
+      {/* PRODUCT SLIDER */}
       <motion.div
-        initial={{ y: "100px", opacity: 0 }}
+        initial={{ y: "80px", opacity: 0 }}
         whileInView={{ y: "0", opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ delay: 0.6, duration: 0.6 }}
+        transition={{ delay: 0.4, duration: 0.6 }}
       >
         <Carousel
-          opts={{
-            align: "start",
-          }}
-          className="w-full mb-6 md:mb-9"
+          opts={{ align: "start" }}
+          className="w-full mb-6 md:mb-10"
         >
-          <CarouselContent className="mx-4 xl:mx-0 space-x-4 sm:space-x-5">
+          <CarouselContent className="space-x-4 sm:space-x-6">
             {data.map((product) => (
               <CarouselItem
                 key={product.id}
-                className="w-full max-w-[198px] sm:max-w-[295px] pl-0"
+                className="w-full max-w-[200px] sm:max-w-[300px] pl-0"
               >
                 <ProductCard data={product} />
               </CarouselItem>
             ))}
           </CarouselContent>
         </Carousel>
+
+        {/* VIEW ALL BUTTON */}
         {viewAllLink && (
-          <div className="w-full px-4 sm:px-0 text-center">
+          <div className="w-full text-center">
             <Link
               href={viewAllLink}
-              className="w-full inline-block sm:w-[218px] px-[54px] py-4 border rounded-full hover:bg-black hover:text-white text-black transition-all font-medium text-sm sm:text-base border-black/10"
+              className="
+                inline-flex items-center justify-center
+                w-full sm:w-[220px]
+                px-12 py-3.5
+                border border-gray-300
+                rounded-full
+                text-gray-900
+                font-medium
+                text-sm sm:text-base
+                hover:bg-gray-900 hover:text-white
+                transition
+              "
             >
               View All
             </Link>

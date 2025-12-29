@@ -1,40 +1,63 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export type Color = {
+/* ---------- TYPES ---------- */
+
+export type Difficulty = {
   name: string;
   code: string;
 };
 
-// Define a type for the slice state
+export type ControllerType = {
+  name: string;
+};
+
+/* ---------- STATE ---------- */
+
 interface ProductsState {
-  colorSelection: Color;
-  sizeSelection: string;
+  difficultySelection: Difficulty | null;
+  controllerSelection: ControllerType | null;
 }
 
-// Define the initial state using that type
+/* ---------- INITIAL STATE ---------- */
+
 const initialState: ProductsState = {
-  colorSelection: {
-    name: "Brown",
-    code: "bg-[#4F4631]",
-  },
-  sizeSelection: "Large",
+  difficultySelection: null,
+  controllerSelection: null,
 };
+
+/* ---------- SLICE ---------- */
 
 export const productsSlice = createSlice({
   name: "products",
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    setColorSelection: (state, action: PayloadAction<Color>) => {
-      state.colorSelection = action.payload;
+    setDifficultySelection: (
+      state,
+      action: PayloadAction<Difficulty>
+    ) => {
+      state.difficultySelection = action.payload;
     },
-    setSizeSelection: (state, action: PayloadAction<string>) => {
-      state.sizeSelection = action.payload;
+
+    setControllerSelection: (
+      state,
+      action: PayloadAction<ControllerType>
+    ) => {
+      state.controllerSelection = action.payload;
+    },
+
+    clearProductFilters: (state) => {
+      state.difficultySelection = null;
+      state.controllerSelection = null;
     },
   },
 });
 
-export const { setColorSelection, setSizeSelection } = productsSlice.actions;
+/* ---------- EXPORTS ---------- */
+
+export const {
+  setDifficultySelection,
+  setControllerSelection,
+  clearProductFilters,
+} = productsSlice.actions;
 
 export default productsSlice.reducer;

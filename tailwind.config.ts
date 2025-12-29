@@ -9,10 +9,19 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      /* =====================
+         FONTS (TECH STYLE)
+      ===================== */
       fontFamily: {
-        integralCF: ["var(--font-integralCF)"],
-        satoshi: ["var(--font-satoshi)"],
+        heading: ["var(--font-poppins)", "sans-serif"], // Hero, headings
+        body: ["var(--font-inter)", "sans-serif"],      // Paragraphs
+        integralCF: ["var(--font-integralCF)"], // keep if used
+        satoshi: ["var(--font-satoshi)"],       // keep if used
       },
+
+      /* =====================
+         SCREEN & LAYOUT
+      ===================== */
       screens: {
         xs: "375px",
       },
@@ -22,17 +31,27 @@ const config: Config = {
       maxWidth: {
         frame: "77.5rem",
       },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
+
+      /* =====================
+         TECHLIGENCE COLORS
+      ===================== */
       colors: {
+        /* Core Backgrounds */
+        techDark: "#0B0F19",
+        techSection: "#0F172A",
+        techCard: "#111827",
+
+        /* Brand */
+        techPrimary: "#2563EB", // blue
+        techAccent: "#38BDF8",  // cyan / AI glow
+        techPurple: "#7C3AED",
+
+        /* Text */
+        techHeading: "#E5E7EB",
+        techBody: "#94A3B8",
+        techMuted: "#64748B",
+
+        /* ShadCN compatibility (keep) */
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -66,39 +85,52 @@ const config: Config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        chart: {
-          "1": "hsl(var(--chart-1))",
-          "2": "hsl(var(--chart-2))",
-          "3": "hsl(var(--chart-3))",
-          "4": "hsl(var(--chart-4))",
-          "5": "hsl(var(--chart-5))",
-        },
       },
+
+      /* =====================
+         BACKGROUND EFFECTS
+      ===================== */
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "tech-glow":
+          "radial-gradient(circle at top, rgba(56,189,248,0.25), transparent 60%)",
+      },
+
+      /* =====================
+         BORDER RADIUS
+      ===================== */
+      borderRadius: {
+        lg: "24px",
+        md: "18px",
+        sm: "12px",
+      },
+
+      /* =====================
+         ANIMATIONS
+      ===================== */
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        glow: {
+          "0%": { boxShadow: "0 0 0 rgba(56,189,248,0.0)" },
+          "100%": { boxShadow: "0 0 40px rgba(56,189,248,0.35)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        glow: "glow 2s ease-in-out infinite alternate",
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
   safelist: ["backdrop-blur-[2px]"],
 };
+
 export default config;

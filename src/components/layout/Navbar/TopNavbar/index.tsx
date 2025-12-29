@@ -22,27 +22,27 @@ const data: NavMenu = [
     children: [
       {
         id: 11,
-        label: "Men's clothes",
+        label: "Autonomous Robots",
         url: "/shop#men-clothes",
-        description: "In attractive and spectacular colors and designs",
+        description: "Smart robots designed for navigation and automation",
       },
       {
         id: 12,
-        label: "Women's clothes",
+        label: "AI-Powered Systems",
         url: "/shop#women-clothes",
-        description: "Ladies, your style and tastes are important to us",
+        description: "Intelligent solutions using AI and machine learning",
       },
       {
         id: 13,
-        label: "Kids clothes",
+        label: "Industrial Robotics",
         url: "/shop#kids-clothes",
-        description: "For all ages, with happy and beautiful colors",
+        description: "Robots for manufacturing and warehouse automation",
       },
       {
         id: 14,
-        label: "Bags and Shoes",
+        label: "Security & Surveillance Robots",
         url: "/shop#bag-shoes",
-        description: "Suitable for men, women and all tastes and styles",
+        description: "Advanced robots for monitoring and safety",
       },
     ],
   },
@@ -63,7 +63,7 @@ const data: NavMenu = [
   {
     id: 4,
     type: "MenuItem",
-    label: "Brands",
+    label: "Innovation",
     url: "/shop#brands",
     children: [],
   },
@@ -71,74 +71,98 @@ const data: NavMenu = [
 
 const TopNavbar = () => {
   return (
-    <nav className="sticky top-0 bg-white z-20">
-      <div className="flex relative max-w-frame mx-auto items-center justify-between md:justify-start py-5 md:py-6 px-4 xl:px-0">
+    <nav
+      className="
+        sticky top-0 z-40
+        bg-white
+        border-b border-gray-200
+        backdrop-blur-sm
+      "
+    >
+      <div className="flex max-w-frame mx-auto items-center justify-between px-4 xl:px-0 py-4">
+
+        {/* LEFT */}
         <div className="flex items-center">
           <div className="block md:hidden mr-4">
             <ResTopNavbar data={data} />
           </div>
+
           <Link
             href="/"
-            className={cn([
+            className={cn(
               integralCF.className,
-              "text-2xl lg:text-[32px] mb-2 mr-3 lg:mr-10",
-            ])}
+              "text-2xl lg:text-[32px] text-gray-900 hover:text-blue-600 transition"
+            )}
           >
-            SHOP.CO
+            Techligence
           </Link>
         </div>
-        <NavigationMenu className="hidden md:flex mr-2 lg:mr-7">
-          <NavigationMenuList>
+
+        {/* CENTER MENU */}
+        <NavigationMenu className="hidden md:flex">
+          <NavigationMenuList className="flex items-center gap-8">
             {data.map((item) => (
               <React.Fragment key={item.id}>
                 {item.type === "MenuItem" && (
-                  <MenuItem label={item.label} url={item.url} />
+                  <div className="text-gray-700 hover:text-blue-600 transition">
+                    <MenuItem label={item.label} url={item.url} />
+                  </div>
                 )}
+
                 {item.type === "MenuList" && (
-                  <MenuList data={item.children} label={item.label} />
+                  <div className="text-gray-700 hover:text-blue-600 transition">
+                    <MenuList data={item.children} label={item.label} />
+                  </div>
                 )}
               </React.Fragment>
             ))}
           </NavigationMenuList>
         </NavigationMenu>
-        <InputGroup className="hidden md:flex bg-[#F0F0F0] mr-3 lg:mr-10">
-          <InputGroup.Text>
-            <Image
-              priority
-              src="/icons/search.svg"
-              height={20}
-              width={20}
-              alt="search"
-              className="min-w-5 min-h-5"
+
+        {/* RIGHT */}
+        <div className="flex items-center gap-4">
+
+          {/* SEARCH */}
+          <InputGroup
+            className="
+              hidden md:flex
+              bg-gray-100
+              border border-gray-200
+              rounded-full
+              px-4
+            "
+          >
+            <InputGroup.Text>
+              <Image
+                src="/icons/search.svg"
+                height={18}
+                width={18}
+                alt="search"
+                className="opacity-60"
+              />
+            </InputGroup.Text>
+            <InputGroup.Input
+              type="search"
+              name="search"
+              placeholder="Search for products..."
+              className="bg-transparent text-gray-700 placeholder:text-gray-400"
             />
-          </InputGroup.Text>
-          <InputGroup.Input
-            type="search"
-            name="search"
-            placeholder="Search for products..."
-            className="bg-transparent placeholder:text-black/40"
-          />
-        </InputGroup>
-        <div className="flex items-center">
-          <Link href="/search" className="block md:hidden mr-[14px] p-1">
-            <Image
-              priority
-              src="/icons/search-black.svg"
-              height={100}
-              width={100}
-              alt="search"
-              className="max-w-[22px] max-h-[22px]"
-            />
-          </Link>
+          </InputGroup>
+
+          {/* CART */}
           <CartBtn />
-          <Link href="/#signin" className="p-1">
+
+          {/* USER */}
+          <Link
+            href="/#signin"
+            className="p-2 rounded-full hover:bg-gray-100 transition"
+          >
             <Image
-              priority
               src="/icons/user.svg"
-              height={100}
-              width={100}
+              height={22}
+              width={22}
               alt="user"
-              className="max-w-[22px] max-h-[22px]"
+              className="opacity-70"
             />
           </Link>
         </div>

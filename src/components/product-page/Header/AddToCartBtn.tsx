@@ -8,7 +8,8 @@ import React from "react";
 
 const AddToCartBtn = ({ data }: { data: Product & { quantity: number } }) => {
   const dispatch = useAppDispatch();
-  const { sizeSelection, colorSelection } = useAppSelector(
+
+  const { difficultySelection, controllerSelection } = useAppSelector(
     (state: RootState) => state.products
   );
 
@@ -23,7 +24,10 @@ const AddToCartBtn = ({ data }: { data: Product & { quantity: number } }) => {
             name: data.title,
             srcUrl: data.srcUrl,
             price: data.price,
-            attributes: [sizeSelection, colorSelection.name],
+            attributes: [
+              difficultySelection?.name ?? "Not Selected",
+              controllerSelection?.name ?? "Not Selected",
+            ],
             discount: data.discount,
             quantity: data.quantity,
           })

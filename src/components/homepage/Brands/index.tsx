@@ -1,44 +1,31 @@
-import Image from "next/image";
 import React from "react";
 
-const brandsData: { id: string; srcUrl: string }[] = [
-  {
-    id: "versace",
-    srcUrl: "/icons/versace-logo.svg",
-  },
-  {
-    id: "zara",
-    srcUrl: "/icons/zara-logo.svg",
-  },
-  {
-    id: "gucci",
-    srcUrl: "/icons/gucci-logo.svg",
-  },
-  {
-    id: "prada",
-    srcUrl: "/icons/prada-logo.svg",
-  },
-  {
-    id: "calvin-klein",
-    srcUrl: "/icons/calvin-klein-logo.svg",
-  },
+const brandsData = [
+  { id: "robots", label: "ROBOTS" },
+  { id: "systems", label: "SYSTEMS" },
+  { id: "security", label: "SECURITY" },
 ];
 
 const Brands = () => {
   return (
-    <div className="bg-black">
-      <div className="max-w-frame mx-auto flex flex-wrap items-center justify-center md:justify-between py-5 md:py-0 sm:px-4 xl:px-0 space-x-7">
-        {brandsData.map((brand) => (
-          <Image
-            key={brand.id}
-            priority
-            src={brand.srcUrl}
-            height={0}
-            width={0}
-            alt={brand.id}
-            className="h-auto w-auto max-w-[116px] lg:max-w-48 max-h-[26px] lg:max-h-9 my-5 md:my-11"
-          />
-        ))}
+    <div className="bg-techSection">
+      <div className="max-w-frame mx-auto flex items-center justify-center py-6 sm:px-4 xl:px-0">
+        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
+          {brandsData.map((brand, index) => (
+            <React.Fragment key={brand.id}>
+              <span className="text-white text-lg md:text-2xl font-semibold tracking-widest">
+                {brand.label}
+              </span>
+
+              {/* Separator | except after last item */}
+              {index !== brandsData.length - 1 && (
+                <span className="text-white text-lg md:text-2xl font-semibold">
+                  |
+                </span>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
       </div>
     </div>
   );

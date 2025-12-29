@@ -12,15 +12,16 @@ const PriceSection = () => {
     <Accordion type="single" collapsible defaultValue="filter-price">
       <AccordionItem value="filter-price" className="border-none">
         <AccordionTrigger className="text-black font-bold text-xl hover:no-underline p-0 py-0.5">
-          Price
+          Price Range
         </AccordionTrigger>
+
         <AccordionContent className="pt-4" contentClassName="overflow-visible">
           <Slider
-            defaultValue={[50, 200]}
-            min={0}
-            max={250}
-            step={1}
-            label="$"
+            defaultValue={[2000, 200000]}
+            min={1000}
+            max={200000}
+            step={500}
+            label="₹"
           />
           <div className="mb-3" />
         </AccordionContent>
