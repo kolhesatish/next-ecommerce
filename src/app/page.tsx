@@ -18,7 +18,7 @@ export const newArrivalsData: Product[] = [
   },
   {
     id: 2,
-    title: "ComboBot - Object Avoider + Line Follower",
+    title: "ComboBot - Object Avoider +Line Follower",
     srcUrl: "/images/combobot.jpeg",
     gallery: ["/images/combobot.jpeg", "/images/combobot1.jpeg", "/images/combobot.jpeg", "/images/combobot3.jpeg"],
     price: 54,
