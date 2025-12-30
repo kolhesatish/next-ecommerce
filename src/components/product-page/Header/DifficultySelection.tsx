@@ -1,32 +1,33 @@
 "use client";
 
 import {
-  Color,
-  setColorSelection,
+  Difficulty,
+  setDifficultySelection,
 } from "@/lib/features/products/productsSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks/redux";
+
 import { RootState } from "@/lib/store";
 import { cn } from "@/lib/utils";
 import React from "react";
 import { IoMdCheckmark } from "react-icons/io";
 
-const colorsData: Color[] = [
+const difficultyData: Difficulty[] = [
   {
-    name: "Brown",
-    code: "bg-[#4F4631]",
+    name: "Beginner",
+    code: "bg-green-600",
   },
   {
-    name: "Green",
-    code: "bg-[#314F4A]",
+    name: "Intermediate",
+    code: "bg-yellow-500",
   },
   {
-    name: "Blue",
-    code: "bg-[#31344F]",
+    name: "Advanced",
+    code: "bg-red-600",
   },
 ];
 
-const ColorSelection = () => {
-  const { colorSelection } = useAppSelector(
+const DifficultySelection = () => {
+  const { difficultySelection } = useAppSelector(
     (state: RootState) => state.products
   );
   const dispatch = useAppDispatch();
@@ -34,20 +35,21 @@ const ColorSelection = () => {
   return (
     <div className="flex flex-col">
       <span className="text-sm sm:text-base text-black/60 mb-4">
-        Select Colors
+        Select Difficulty Level
       </span>
+
       <div className="flex items-center flex-wrap space-x-3 sm:space-x-4">
-        {colorsData.map((color, index) => (
+        {difficultyData.map((level, index) => (
           <button
             key={index}
             type="button"
-            className={cn([
-              color.code,
-              "rounded-full w-9 sm:w-10 h-9 sm:h-10 flex items-center justify-center",
-            ])}
-            onClick={() => dispatch(setColorSelection(color))}
+            className={cn(
+              level.code,
+              "rounded-full w-9 sm:w-10 h-9 sm:h-10 flex items-center justify-center"
+            )}
+            onClick={() => dispatch(setDifficultySelection(level))}
           >
-            {colorSelection.name === color.name && (
+            {difficultySelection?.name === level.name && (
               <IoMdCheckmark className="text-base text-white" />
             )}
           </button>
@@ -57,4 +59,4 @@ const ColorSelection = () => {
   );
 };
 
-export default ColorSelection;
+export default DifficultySelection;
