@@ -13,7 +13,7 @@ const categoriesData: Category[] = [
     slug: "/shop?category=humanoid-robots",
   },
   {
-    title: "Robotic Arms & Actuators",
+    title: "Robotic Actuators",
     slug: "/shop?category=robotic-arms-actuators",
   },
   {
@@ -21,15 +21,15 @@ const categoriesData: Category[] = [
     slug: "/shop?category=mobile-robots",
   },
   {
-    title: "Mobile Robot Platforms",
-    slug: "/shop?category=robot-platforms",
+    title: "Robotic Arms",
+    slug: "/shop?category=robot-arms",
   },
   {
-    title: "Grippers & Robot Hands",
+    title: " Robot Hands & Grippers ",
     slug: "/shop?category=grippers-hands",
   },
   {
-    title: "DIY & Robotics Kits",
+    title: "3D & Robotics Kits",
     slug: "/shop?category=diy-kits",
   },
 ];

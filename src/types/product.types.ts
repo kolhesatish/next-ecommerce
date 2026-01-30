@@ -11,4 +11,7 @@ export type Product = {
   price: number;
   discount: Discount;
   rating: number;
+  category: "innovation" | "new-arrival" | "top-selling";
 };
+
+ 

@@ -15,6 +15,7 @@ export const newArrivalsData: Product[] = [
     price: 24,
     discount: { amount: 0, percentage: 0 },
     rating: 4.5,
+    category:  "new-arrival" ,
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ export const newArrivalsData: Product[] = [
     price: 54,
     discount: { amount: 0, percentage: 20 },
     rating: 3.5,
+    category:  "new-arrival" ,
   },
   {
     id: 3,
@@ -33,6 +35,7 @@ export const newArrivalsData: Product[] = [
     price: 46,
     discount: { amount: 0, percentage: 0 },
     rating: 4.5,
+    category:  "new-arrival" ,
   },
   {
     id: 4,
@@ -42,6 +45,7 @@ export const newArrivalsData: Product[] = [
     price: 36,
     discount: { amount: 0, percentage: 30 },
     rating: 4.5,
+    category:  "new-arrival" ,
   },
 ];
 
@@ -54,6 +58,7 @@ export const topSellingData: Product[] = [
     price: 120,
     discount: { amount: 0, percentage: 20 },
     rating: 5.0,
+    category:  "top-selling",
   },
   {
     id: 6,
@@ -63,6 +68,7 @@ export const topSellingData: Product[] = [
     price: 90,
     discount: { amount: 0, percentage: 0 },
     rating: 4.0,
+    category: "top-selling",
   },
   {
     id: 7,
@@ -72,6 +78,7 @@ export const topSellingData: Product[] = [
     price: 43,
     discount: { amount: 0, percentage: 0 },
     rating: 3.0,
+    category:  "top-selling",
   },
   {
     id: 8,
@@ -81,6 +88,7 @@ export const topSellingData: Product[] = [
     price: 40,
     discount: { amount: 0, percentage: 0 },
     rating: 4.5,
+    category: "top-selling",
   },
 ];
 
@@ -93,6 +101,7 @@ export const relatedProductData: Product[] = [
     price: 35,
     discount: { amount: 0, percentage: 20 },
     rating: 4.0,
+    category: "innovation" ,
   },
   {
     id: 13,
@@ -102,6 +111,7 @@ export const relatedProductData: Product[] = [
     price: 45,
     discount: { amount: 0, percentage: 0 },
     rating: 3.5,
+    category: "innovation" ,
   },
   {
     id: 14,
@@ -111,6 +121,7 @@ export const relatedProductData: Product[] = [
     price: 80,
     discount: { amount: 0, percentage: 0 },
     rating: 4.5,
+    category: "innovation" ,
   },
   {
     id: 15,
@@ -120,6 +131,7 @@ export const relatedProductData: Product[] = [
     price: 150,
     discount: { amount: 0, percentage: 30 },
     rating: 5.0,
+    category: "innovation",
   },
 ];
 

@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import {
   Sheet,
   SheetClose,
@@ -20,6 +22,12 @@ import {
 } from "@/components/ui/accordion";
 
 const ResTopNavbar = ({ data }: { data: NavMenu }) => {
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    setIsAdmin(localStorage.getItem("isAdmin") === "true");
+  }, []);
+
   return (
     <Sheet>
       <SheetTrigger asChild className="cursor-pointer">
@@ -32,35 +40,50 @@ const ResTopNavbar = ({ data }: { data: NavMenu }) => {
           className="max-w-[22px] max-h-[22px]"
         />
       </SheetTrigger>
+
       <SheetContent side="left" className="overflow-y-auto">
         <SheetHeader className="mb-10">
           <SheetTitle asChild>
             <SheetClose asChild>
-              <Link href="/" className={cn([integralCF.className, "text-2xl"])}>
+              <Link
+                href="/"
+                className={cn([integralCF.className, "text-2xl"])}
+              >
                 Techligence
               </Link>
             </SheetClose>
           </SheetTitle>
         </SheetHeader>
+
         <div className="flex flex-col items-start">
+
+          {/* MAIN NAV ITEMS */}
           {data.map((item) => (
             <React.Fragment key={item.id}>
               {item.type === "MenuItem" && (
                 <SheetClose asChild>
-                  <Link href={item.url ?? "/"} className="mb-4">
+                  <Link
+                    href={item.url ?? "/"}
+                    className="mb-4 text-base"
+                  >
                     {item.label}
                   </Link>
                 </SheetClose>
               )}
+
               {item.type === "MenuList" && (
                 <div className="mb-4 w-full">
                   <Accordion type="single" collapsible>
-                    <AccordionItem value={item.label} className="border-none">
+                    <AccordionItem
+                      value={item.label}
+                      className="border-none"
+                    >
                       <AccordionTrigger className="text-left p-0 py-0.5 font-normal text-base">
                         {item.label}
                       </AccordionTrigger>
+
                       <AccordionContent className="p-4 pb-0 border-l flex flex-col">
-                        {item.children.map((itemChild, idx) => (
+                        {item.children.map((itemChild) => (
                           <SheetClose
                             key={itemChild.id}
                             asChild
@@ -78,6 +101,24 @@ const ResTopNavbar = ({ data }: { data: NavMenu }) => {
               )}
             </React.Fragment>
           ))}
+
+          {/* ADMIN (MOBILE) */}
+          <div className="mt-6 pt-4 border-t w-full">
+            <SheetClose asChild>
+              <Link
+                href={isAdmin ? "/admin" : "/admin/login"}
+                className="
+                  block
+                  px-2 py-3
+                  text-blue-600
+                  font-medium
+                  text-base
+                "
+              >
+                Admin
+              </Link>
+            </SheetClose>
+          </div>
         </div>
       </SheetContent>
     </Sheet>

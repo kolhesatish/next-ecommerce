@@ -17,9 +17,9 @@ const PriceSection = () => {
 
         <AccordionContent className="pt-4" contentClassName="overflow-visible">
           <Slider
-            defaultValue={[2000, 200000]}
-            min={1000}
-            max={200000}
+            defaultValue={[100, 1000]}
+            min={100}
+            max={1000}
             step={500}
             label="₹"
           />

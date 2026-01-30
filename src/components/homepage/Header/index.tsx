@@ -1,5 +1,4 @@
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
-import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -9,7 +8,7 @@ const Header = () => {
   return (
     <header className="bg-white pt-16 md:pt-28 text-gray-900 overflow-hidden">
       <div className="max-w-frame mx-auto grid grid-cols-1 md:grid-cols-2 px-4">
-        
+
         {/* LEFT */}
         <section className="font-heading">
           <motion.h2

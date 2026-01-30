@@ -2,27 +2,28 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 /* ---------- TYPES ---------- */
 
-export type Difficulty = {
-  name: string;
-  code: string;
+export type Availability = {
+  label: string;   // e.g. "In Stock"
+  value: string;   // e.g. "in_stock"
 };
 
-export type ControllerType = {
-  name: string;
+export type Customization = {
+  label: string;   // e.g. "Standard Build"
+  value: string;   // e.g. "standard"
 };
 
 /* ---------- STATE ---------- */
 
 interface ProductsState {
-  difficultySelection: Difficulty | null;
-  controllerSelection: ControllerType | null;
+  availabilitySelection: Availability | null;
+  customizationSelection: Customization | null;
 }
 
 /* ---------- INITIAL STATE ---------- */
 
 const initialState: ProductsState = {
-  difficultySelection: null,
-  controllerSelection: null,
+  availabilitySelection: null,
+  customizationSelection: null,
 };
 
 /* ---------- SLICE ---------- */
@@ -31,23 +32,23 @@ export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    setDifficultySelection: (
+    setAvailabilitySelection: (
       state,
-      action: PayloadAction<Difficulty>
+      action: PayloadAction<Availability>
     ) => {
-      state.difficultySelection = action.payload;
+      state.availabilitySelection = action.payload;
     },
 
-    setControllerSelection: (
+    setCustomizationSelection: (
       state,
-      action: PayloadAction<ControllerType>
+      action: PayloadAction<Customization>
     ) => {
-      state.controllerSelection = action.payload;
+      state.customizationSelection = action.payload;
     },
 
     clearProductFilters: (state) => {
-      state.difficultySelection = null;
-      state.controllerSelection = null;
+      state.availabilitySelection = null;
+      state.customizationSelection = null;
     },
   },
 });
@@ -55,8 +56,8 @@ export const productsSlice = createSlice({
 /* ---------- EXPORTS ---------- */
 
 export const {
-  setDifficultySelection,
-  setControllerSelection,
+  setAvailabilitySelection,
+  setCustomizationSelection,
   clearProductFilters,
 } = productsSlice.actions;
 
